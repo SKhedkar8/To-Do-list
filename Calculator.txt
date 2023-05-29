@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class ArithmeticOperations {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Arithmetic Operations Calculator!");
+        System.out.println("What would you like to do?");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Enter two numbers to add:");
+                int num1 = scanner.nextInt();
+                int num2 = scanner.nextInt();
+                int sum = num1 + num2;
+                System.out.println("The sum is " + sum);
+                break;
+            case 2:
+                System.out.println("Enter two numbers to subtract:");
+                num1 = scanner.nextInt();
+                num2 = scanner.nextInt();
+                int difference = num1 - num2;
+                System.out.println("The difference is " + difference);
+                break;
+            case 3:
+                System.out.println("Enter two numbers to multiply:");
+                num1 = scanner.nextInt();
+                num2 = scanner.nextInt();
+                int product = num1 * num2;
+                System.out.println("The product is " + product);
+                break;
+            case 4:
+                System.out.println("Enter two numbers to divide:");
+                num1 = scanner.nextInt();
+                num2 = scanner.nextInt();
+                int quotient = num1 / num2;
+                System.out.println("The quotient is " + quotient);
+                break;
+            default:
+                System.out.println("Invalid choice!");
+                break;
+        }
+
+        System.out.println("Would you like to do another calculation? (Y/N)");
+        String answer = scanner.next();
+
+        if (answer.equals("Y")) {
+            main(args);
+        } else {
+            System.out.println("Thank you for using the Arithmetic Operations Calculator!");
+        }
+    }
+}
