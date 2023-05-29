@@ -1,0 +1,84 @@
+import java.util.Scanner;
+
+public class RockPaperScissorsGame {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Displaying the game rules
+        System.out.println("Welcome to Rock, Paper, Scissors game!");
+        System.out.println("Rules:");
+        System.out.println("Rock beats Scissors");
+        System.out.println("Scissors beats Paper");
+        System.out.println("Paper beats Rock");
+        System.out.println("--------------------------------------");
+
+        // Game loop
+        while (true) {
+            // Getting user's choice
+            System.out.print("Enter your move (rock, paper, or scissors): ");
+            String userMove = scanner.nextLine().toLowerCase();
+
+            // Validating the user's move
+            if (!userMove.equals("rock") && !userMove.equals("paper") && !userMove.equals("scissors")) {
+                System.out.println("Invalid move. Please try again.");
+                continue;
+            }
+
+            // Generating computer's move
+            String computerMove = generateComputerMove();
+
+            // Displaying the moves
+            System.out.println("Your move: " + userMove);
+            System.out.println("Computer's move: " + computerMove);
+            System.out.println("--------------------------------------");
+
+            // Determining the winner
+            String result = determineWinner(userMove, computerMove);
+            System.out.println(result);
+
+            // Asking the user if they want to play again
+            System.out.print("Do you want to play again? (yes/no): ");
+            String playAgain = scanner.nextLine().toLowerCase();
+
+            if (!playAgain.equals("yes")) {
+                break;
+            }
+
+            System.out.println("--------------------------------------");
+        }
+
+        // Closing the scanner
+        scanner.close();
+    }
+
+    private static String generateComputerMove() {
+        // Generating a random number between 0 and 2
+        int randomNumber = (int) (Math.random() * 3);
+
+        // Mapping the random number to a move
+        if (randomNumber == 0) {
+            return "rock";
+        } else if (randomNumber == 1) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+
+    /**
+     * @param userMove
+     * @param computerMove
+     * @return
+     */
+    private static String determineWinner(String userMove, String computerMove) {
+        if (userMove.equals(computerMove)) {
+            return "It's a tie!";
+        } else if ((userMove.equals("rock") && computerMove.equals("scissors")) ||
+                   (userMove.equals("scissors") && computerMove.equals("paper")) ||
+                   (userMove.equals("paper") && computerMove.equals("rock"))) {
+            return "You win!";
+        } else {
+            return "Computer wins!";
+        }
+    }
+}
